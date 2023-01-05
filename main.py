@@ -168,6 +168,29 @@ def actualizar():
     # Redirige al usuario a la página principal
     return redirect(url_for("index"))
 
+@app.route("/borrar", methods=["POST"])
+def borrar():
+    # Obtiene el valor de la solicitud POST
+    id = request.form["id"]
+
+    # Crea una conexión a la base de datos (si no existe, la crea)
+    conn = sqlite3.connect("mi_base_de_datos.db")
+
+    # Crea un cursor
+    cursor = conn.cursor()
+
+    # Borra una fila en la tabla "mi_tabla"
+    cursor.execute("DELETE FROM tabla_colores WHERE id = ?", (id,))
+
+    # Guarda los cambios en la base de datos
+    conn.commit()
+
+    # Cierra la conexión
+    conn.close()
+
+    # Redirige a la ruta "/"
+    return redirect(url_for("index"))
+
 if __name__ == '__main__':
     #crerBase()
     #ver()

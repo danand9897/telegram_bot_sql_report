@@ -18,6 +18,10 @@
                 <td><input type="text" name="columna_2" value="{{ fila[2] }}"></td>
                 <td><button type="submit">Actualizar</button></td>
             </form>
+            <form method="post" action="/borrar">
+                <input type="hidden" name="id" value="{{ fila[0] }}">
+                <td><button type="submit">Borrar</button></td>
+            </form>
         </tr>
         {% endfor %}
     </table>
