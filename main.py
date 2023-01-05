@@ -164,27 +164,36 @@ def graficar(columna_1, columna_2, nombre_columna_1, nombre_columna_2):
 
 @app.route('/')
 def index():
+    results = [(), (), ()]
     # Conecta a la base de datos
     conn = sqlite3.connect("mi_base_de_datos.db")
 
     # Crea un cursor para ejecutar la consulta
     cursor = conn.cursor()
 
-    # Ejecuta la consulta y obtiene los resultados
-    cursor.execute("SELECT * FROM tabla_colores")
-    results = cursor.fetchall()
+    # Verifica si la tabla existe
+    #if 'tabla_colores' in cursor.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall():
+    try:
+        cursor.execute("SELECT * FROM tabla_colores")
+        results = cursor.fetchall()
+    except sqlite3.OperationalError:
+        cursor.execute(
+            "CREATE TABLE tabla_colores (id INTEGER PRIMARY KEY AUTOINCREMENT, color_1 INTEGER, color_2 INTEGER)")
+        results = []
+        # Ejecuta la consulta y obtiene los resultados
+    if cursor.execute("SELECT * FROM tabla_colores").fetchone():
 
-    # Cierra el cursor y la conexión
+        # Crea una lista de tuplas con los resultados
+        # Obtiene el nombre de la columna
+        nombre_columna_1 = cursor.description[1][0]
+        nombre_columna_2 = cursor.description[2][0]
+        columna_1 = [(row[1]) for row in results]
+        columna_2 = [(row[2]) for row in results]
+        graficar(columna_1, columna_2, nombre_columna_1, nombre_columna_2)
+
+        # Cierra el cursor y la conexión
     cursor.close()
     conn.close()
-    # Crea una lista de tuplas con los resultados
-    # Obtiene el nombre de la columna
-    nombre_columna_1 = cursor.description[1][0]
-    nombre_columna_2 = cursor.description[2][0]
-    columna_1 = [(row[1]) for row in results]
-    columna_2 = [(row[2]) for row in results]
-    graficar(columna_1, columna_2, nombre_columna_1, nombre_columna_2)
-
     return render_template("index.html", datos=results)
 
 @app.route('/mi_grafico')

@@ -4,6 +4,7 @@
     <title>Mi tabla</title>
 </head>
 <body>
+{% if datos %}
 <table>
     <tr>
         <th>Color 1</th>
@@ -29,6 +30,9 @@
     </tr>
     {% endfor %}
 </table>
+{% else %}
+<h2>Aún no hay datos en la tabla. Agrega algunos haciendo click en el botón "Insertar".</h2>
+{% endif %}
 <br><br>
 <h3>Insertar nuevos datos </h3>
 <table>
@@ -45,6 +49,8 @@
     </tr>
 
 </table>
-<img src="/mi_grafico">
+{% if datos %}
+    <img src="/mi_grafico">
+{% endif %}
 </body>
 </html>
