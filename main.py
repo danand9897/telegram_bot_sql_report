@@ -1,5 +1,5 @@
 import sqlite3
-
+import os
 import matplotlib
 import matplotlib.pyplot as plt
 matplotlib.use('TkAgg')
@@ -91,7 +91,16 @@ def ver():
     # Muestra el gráfico
     plt.show()
 
-def mandarTelegra():
+    # Elimina la imagen anterior si existe
+    if os.path.exists("images/mi_imagen.png"):
+        os.remove("images/mi_imagen.png")
+
+    # Guarda la figura en la carpeta "imágenes" con el nombre "mi_imagen.png"
+    fig.savefig("images/mi_imagen.png")
+
+
+
+def mandarTelegram():
 
 
     # Tu token de bot
@@ -101,7 +110,7 @@ def mandarTelegra():
     chat_id = "-875581438"
 
     # El nombre del archivo de la imagen que quieres enviar
-    image_file = "/content/FIFA.png"
+    image_file = "images/mi_imagen.png"
 
     # Crea el URL para enviar la imagen
     url = "https://api.telegram.org/bot{}/sendPhoto".format(bot_token)
@@ -120,3 +129,4 @@ def mandarTelegra():
 if __name__ == '__main__':
     #crerBase()
     ver()
+    mandarTelegram()
