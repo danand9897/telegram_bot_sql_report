@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi tabla</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Columna 1</th>
+            <th>Columna 2</th>
+        </tr>
+        {% for fila in datos %}
+        <tr>
+            <td>{{ fila[0] }}</td>
+            <td>{{ fila[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form method="post" action="/actualizar">
+        <label for="columna_1">Columna 1:</label><br>
+        <input type="text" id="columna_1" name="columna_1"><br>
+        <label for="columna_2">Columna 2:</label><br>
+        <input type="text" id="columna_2" name="columna_2"><br><br>
+        <input type="submit" value="Actualizar">
+    </form>
+</body>
+</html>

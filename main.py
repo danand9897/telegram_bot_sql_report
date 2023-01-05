@@ -4,7 +4,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 matplotlib.use('TkAgg')
 import requests
-from flask import Flask
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
@@ -132,7 +132,40 @@ def mandarTelegram():
 
 @app.route('/')
 def index():
-    return "HOLA"
+    # Conecta a la base de datos
+    conn = sqlite3.connect("mi_base_de_datos.db")
+
+    # Crea un cursor para ejecutar la consulta
+    cursor = conn.cursor()
+
+    # Ejecuta la consulta y obtiene los resultados
+    cursor.execute("SELECT * FROM tabla_colores")
+    results = cursor.fetchall()
+
+    # Cierra el cursor y la conexión
+    cursor.close()
+    conn.close()
+    return render_template("index.html", datos=results)
+
+@app.route("/actualizar", methods=["POST"])
+def actualizar():
+    # Obtiene los datos del formulario
+    columna_1 = request.form["columna_1"]
+    columna_2 = request.form["columna_2"]
+
+    # Conecta a la base de datos
+    conn = sqlite3.connect("mi_base_de_datos.db")
+    cursor = conn.cursor()
+
+    # Actualiza la tabla con los nuevos datos
+    cursor.execute("INSERT INTO tabla_colores (color_1, color_2) VALUES (?, ?)", (columna_1, columna_2))
+    conn.commit()
+
+    # Cierra la conexión a la base de datos
+    conn.close()
+
+    # Redirige al usuario a la página principal
+    return redirect("/")
 
 if __name__ == '__main__':
     #crerBase()
