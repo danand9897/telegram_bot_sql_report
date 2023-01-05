@@ -4,7 +4,10 @@ import matplotlib
 import matplotlib.pyplot as plt
 matplotlib.use('TkAgg')
 import requests
-import json
+from flask import Flask
+
+app = Flask(__name__)
+
 
 def crerBase():
 
@@ -126,7 +129,13 @@ def mandarTelegram():
 
     print("Imagen enviada con éxito!")
 
+
+@app.route('/')
+def index():
+    return "HOLA"
+
 if __name__ == '__main__':
     #crerBase()
-    ver()
-    mandarTelegram()
+    #ver()
+    #mandarTelegram()
+    app.run(port=5500)
