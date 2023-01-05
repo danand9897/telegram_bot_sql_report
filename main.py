@@ -4,7 +4,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 matplotlib.use('TkAgg')
 import requests
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -19,13 +19,13 @@ def crerBase():
     cursor = conn.cursor()
 
     # Crea la tabla
-    cursor.execute("CREATE TABLE tabla_colores (color_1 INTEGER, color_2 INTEGER)")
+    cursor.execute("CREATE TABLE tabla_colores (id INTEGER PRIMARY KEY AUTOINCREMENT, color_1 INTEGER, color_2 INTEGER)")
 
     # Agrega algunos datos a la tabla
-    cursor.execute("INSERT INTO tabla_colores VALUES (50, 20)")
-    cursor.execute("INSERT INTO tabla_colores VALUES (20, 30)")
-    cursor.execute("INSERT INTO tabla_colores VALUES (60, 80)")
-    cursor.execute("INSERT INTO tabla_colores VALUES (60, 23)")
+    cursor.execute("INSERT INTO tabla_colores (color_1, color_2) VALUES (50, 20)")
+    cursor.execute("INSERT INTO tabla_colores (color_1, color_2) VALUES (20, 30)")
+    cursor.execute("INSERT INTO tabla_colores (color_1, color_2) VALUES (60, 80)")
+    cursor.execute("INSERT INTO tabla_colores (color_1, color_2) VALUES (60, 23)")
 
     # Guarda los cambios en la base de datos
     conn.commit()
@@ -150,6 +150,7 @@ def index():
 @app.route("/actualizar", methods=["POST"])
 def actualizar():
     # Obtiene los datos del formulario
+    id = request.form["id"]
     columna_1 = request.form["columna_1"]
     columna_2 = request.form["columna_2"]
 
@@ -157,15 +158,15 @@ def actualizar():
     conn = sqlite3.connect("mi_base_de_datos.db")
     cursor = conn.cursor()
 
-    # Actualiza la tabla con los nuevos datos
-    cursor.execute("INSERT INTO tabla_colores (color_1, color_2) VALUES (?, ?)", (columna_1, columna_2))
+    # Actualiza los datos de la tabla
+    cursor.execute("UPDATE tabla_colores SET color_1=?, color_2=? WHERE id=?", (columna_1, columna_2, id))
     conn.commit()
 
     # Cierra la conexión a la base de datos
     conn.close()
 
     # Redirige al usuario a la página principal
-    return redirect("/")
+    return redirect(url_for("index"))
 
 if __name__ == '__main__':
     #crerBase()
