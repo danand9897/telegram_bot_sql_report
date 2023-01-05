@@ -4,26 +4,47 @@
     <title>Mi tabla</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Columna 1</th>
-            <th>Columna 2</th>
-            <th>Acciones</th>
-        </tr>
-        {% for fila in datos %}
-        <tr>
-            <form method="post" action="/actualizar">
-                <input type="hidden" name="id" value="{{ fila[0] }}">
-                <td><input type="text" name="columna_1" value="{{ fila[1] }}"></td>
-                <td><input type="text" name="columna_2" value="{{ fila[2] }}"></td>
-                <td><button type="submit">Actualizar</button></td>
-            </form>
-            <form method="post" action="/borrar">
-                <input type="hidden" name="id" value="{{ fila[0] }}">
-                <td><button type="submit">Borrar</button></td>
-            </form>
-        </tr>
-        {% endfor %}
-    </table>
+<table>
+    <tr>
+        <th>Color 1</th>
+        <th>Color 2</th>
+        <th>Acciones</th>
+    </tr>
+    {% for fila in datos %}
+    <tr>
+        <form method="post" action="/actualizar">
+            <input type="hidden" name="id" value="{{ fila[0] }}">
+            <td><input type="text" name="columna_1" value="{{ fila[1] }}"></td>
+            <td><input type="text" name="columna_2" value="{{ fila[2] }}"></td>
+            <td>
+                <button type="submit">Actualizar</button>
+            </td>
+        </form>
+        <form method="post" action="/borrar">
+            <input type="hidden" name="id" value="{{ fila[0] }}">
+            <td>
+                <button type="submit">Borrar</button>
+            </td>
+        </form>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+<h3>Insertar nuevos datos </h3>
+<table>
+    <tr>
+        <th>Color 1</th>
+        <th>Color 2</th>
+    </tr>
+    <tr>
+        <form method="post" action="/insertar">
+            <td><input type="text" id="columna_1" name="columna_1"></td>
+            <td> <input type="text" id="columna_2" name="columna_2"></td>
+            <td> <input type="submit" value="Insertar"></td>
+        </form>
+    </tr>
+
+</table>
+
 </body>
 </html>
