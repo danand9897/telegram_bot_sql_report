@@ -4,7 +4,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 matplotlib.use('TkAgg')
 import requests
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_file
 
 app = Flask(__name__)
 
@@ -129,6 +129,38 @@ def mandarTelegram():
 
     print("Imagen enviada con éxito!")
 
+def graficar(columna_1, columna_2, nombre_columna_1, nombre_columna_2):
+    # Grafica los datos
+
+    fig = plt.figure(figsize=(8,4))
+    fig.tight_layout()
+
+
+    plt.bar(range(1, len(columna_1) + 1), columna_1, width=0.4, label=nombre_columna_1)
+    plt.plot(range(1, len(columna_2) + 1), columna_2, color="orange", label=nombre_columna_2)
+
+    # Agrega etiquetas a los ejes y un título al gráfico
+
+    plt.xlabel("Índices")
+    plt.ylabel("Valores")
+    plt.title("Reporte")
+
+    # Agrega una leyenda
+    plt.legend()
+
+    # Configura el eje x para que solo muestre enteros
+    plt.xticks(range(1, len(columna_1) + 1))
+
+    # Muestra el gráfico
+    #plt.show()
+
+    # Elimina la imagen anterior si existe
+    if os.path.exists("images/imagen_web.png"):
+        os.remove("images/imagen_web.png")
+
+    # Guarda la figura en la carpeta "imágenes" con el nombre "mi_imagen.png"
+    fig.savefig("images/imagen_web.png")
+
 
 @app.route('/')
 def index():
@@ -145,7 +177,19 @@ def index():
     # Cierra el cursor y la conexión
     cursor.close()
     conn.close()
+    # Crea una lista de tuplas con los resultados
+    # Obtiene el nombre de la columna
+    nombre_columna_1 = cursor.description[1][0]
+    nombre_columna_2 = cursor.description[2][0]
+    columna_1 = [(row[1]) for row in results]
+    columna_2 = [(row[2]) for row in results]
+    graficar(columna_1, columna_2, nombre_columna_1, nombre_columna_2)
+
     return render_template("index.html", datos=results)
+
+@app.route('/mi_grafico')
+def mostrar_grafico():
+    return send_file('images/imagen_web.png', mimetype='image/png')
 
 @app.route('/insertar', methods=["POST"])
 def insertar():
