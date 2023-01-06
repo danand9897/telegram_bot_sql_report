@@ -4,13 +4,13 @@ Esta aplicación es una herramienta web que permite a los usuarios gestionar una
 pueden visualizar los campos existentes en la base de datos mostrados en formato de tabla, insertar nuevos datos, actualizar 
 valores existentes y eliminarlos de la base de datos. Además, la aplicación muestra un gráfico combinado llamado Columna agrupada - Línea, 
 donde se presenta un gráfico de columna de barras agrupadas de color azul y una línea de color naranaja, como se muestra en la siguiente imagen:
-![Reporte de ejemplo](images/imagen_ejemplo.png)
+![Reporte_web de ejemplo](images/imagen_ejemplo.png)
 
 Todo esto se realiza mediante una interfaz web amigable y fácil de usar. Además, esta herramienta  permite a los usuarios 
 enviar reportes a un grupo de Telegram. Los usuarios pueden ingresar el nombre del cliente, el entorno en el que 
 se encuentran y el asunto del reporte en un formulario web y luego presionar el botón "Enviar reporte a Telegram" para
 enviar la información, este reporte es una imagen que se genera a partir de todos los datos ingresados anteriormente, la siguiente imagen es un ejemplo del reporte que llegaría al chat de Telegram:
-![Reporte de ejemplo](images/mi_imagen_ejemplo.png)
+![Reporte_telegram de ejemplo](images/mi_imagen_ejemplo.png)
 
 
 ## Instalación 
@@ -44,3 +44,32 @@ git clone https://github.com/danand9897/telegram_bot_sql_report.git C:\rutadesea
 6. Estás listo, podrás acceder a la aplicación desde tu navegador web escribiendo http://127.0.0.1:5000/ en la barra de direcciones, o modificando el "5000" por el puerto que elegiste
 #### Es importante tener en cuenta que el entorno virtual debe ser creado y activado en la misma carpeta donde se encuentra el archivo "requerimientos.txt".
 
+## Guía de usuario
+
+
+## Lista de requerimientos (todas las dependencias necesarias para ejecutar la aplicación)
+certifi==2022.12.7  
+charset-normalizer==2.1.1  
+click==8.1.3  
+colorama==0.4.6  
+contourpy==1.0.6  
+cycler==0.11.0  
+Flask==2.2.2  
+fonttools==4.38.0  
+idna==3.4  
+importlib-metadata==6.0.0  
+itsdangerous==2.1.2  
+Jinja2==3.1.2  
+kiwisolver==1.4.4  
+MarkupSafe==2.1.1  
+matplotlib==3.6.2  
+numpy==1.24.1  
+packaging==22.0  
+Pillow==9.4.0  
+pyparsing==3.0.9  
+python-dateutil==2.8.2  
+requests==2.28.1  
+six==1.16.0  
+urllib3==1.26.13  
+Werkzeug==2.2.2  
+zipp==3.11.0  
