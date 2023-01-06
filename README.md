@@ -19,12 +19,14 @@ enviar la información, este reporte es una imagen que se genera a partir de tod
 ## Instalación 
 ### Python
 
-1. Descarga e instala python 3.9 (recomendado) desde el sitio oficial: https://www.python.org/downloads/
+1. Descarga e instala python 3.9 (recomendado) desde el sitio oficial: https://www.python.org/downloads/release/python-3911/
 2. Abre la consola de comandos de tu sistema operativo (en Windows, puedes buscar "cmd" en el menú de Inicio).
 3. Verifica que tienes instalada la versión correcta de Python, escribiendo: python3 --version
-4. Si quieres usar un entorno virtual (recomendado), instala el módulo virtualenv: python3 -m pip install virtualenv
-5. Crea un nuevo entorno virtual: python3 -m virtualenv nombre_de_mi_entorno
-6. Activa el entorno virtual: en Windows: nombre_de_mi_entorno\Scripts\activate.bat
+4. En caso de que no reconozca el comando anterior, es posible que exista un error en la configuración de Variables de
+Entorno, si este es el caso, visitar el siguiente blog https://tecnoloco.istocks.club/como-agregar-python-a-la-variable-path-de-windows-wiki-util/2020-10-14/ para configurar correctamente.
+5. Si quieres usar un entorno virtual (recomendado), instala el módulo virtualenv: python3 -m pip install virtualenv
+6. Crea un nuevo entorno virtual: python3 -m virtualenv nombre_de_mi_entorno
+7. Activa el entorno virtual: en Windows: nombre_de_mi_entorno\Scripts\activate.bat
 en Linux o MacOS: source nombre_de_mi_entorno/bin/activate
 8. Ya estás listo para instalar este proyecto en Python con la versión 3.9.
 
