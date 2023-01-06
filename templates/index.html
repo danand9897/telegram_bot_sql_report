@@ -57,5 +57,18 @@
     <img src="/mi_grafico">
     {% endif %}
 </div>
+<br><br><br>
+
+    <form method="post" action="/enviar">
+        <label for="cliente">Cliente:</label><br>
+        <input type="text" id="cliente" name="cliente"><br>
+        <label for="entorno">Entorno:</label><br>
+        <input type="text" id="entorno" name="entorno"><br>
+        <label for="asunto">Asunto:</label><br>
+        <input type="text" id="asunto" name="asunto"><br><br>
+        <input type="submit" value="Enviar reporte a Telegram">
+    </form>
+
+
 </body>
 </html>
