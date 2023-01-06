@@ -107,3 +107,8 @@ six==1.16.0
 urllib3==1.26.13  
 Werkzeug==2.2.2  
 zipp==3.11.0  
+
+## Licencia Creative Commons
+Este proyecto de aplicación Flask se distribuye bajo la licencia Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0). Esto significa que puedes compartir y adaptar esta aplicación de manera libre, siempre y cuando proporciones crédito a los autores originales y distribuyas tus contribuciones bajo la misma licencia.
+
+Para ver una copia de esta licencia, puedes visitar https://creativecommons.org/licenses/by-sa/4.0/.
