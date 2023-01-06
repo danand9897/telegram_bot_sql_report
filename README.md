@@ -4,13 +4,16 @@ Esta aplicación es una herramienta web que permite a los usuarios gestionar una
 pueden visualizar los campos existentes en la base de datos mostrados en formato de tabla, insertar nuevos datos, actualizar 
 valores existentes y eliminarlos de la base de datos. Además, la aplicación muestra un gráfico combinado llamado Columna agrupada - Línea, 
 donde se presenta un gráfico de columna de barras agrupadas de color azul y una línea de color naranaja, como se muestra en la siguiente imagen:
+
 ![Reporte_web de ejemplo](images/imagen_ejemplo.png)
 
 Todo esto se realiza mediante una interfaz web amigable y fácil de usar. Además, esta herramienta  permite a los usuarios 
 enviar reportes a un grupo de Telegram. Los usuarios pueden ingresar el nombre del cliente, el entorno en el que 
 se encuentran y el asunto del reporte en un formulario web y luego presionar el botón "Enviar reporte a Telegram" para
 enviar la información, este reporte es una imagen que se genera a partir de todos los datos ingresados anteriormente, la siguiente imagen es un ejemplo del reporte que llegaría al chat de Telegram:
+
 ![Reporte_telegram de ejemplo](images/mi_imagen_ejemplo.png)
+
 
 
 ## Instalación 
@@ -45,6 +48,37 @@ git clone https://github.com/danand9897/telegram_bot_sql_report.git C:\rutadesea
 #### Es importante tener en cuenta que el entorno virtual debe ser creado y activado en la misma carpeta donde se encuentra el archivo "requerimientos.txt".
 
 ## Guía de usuario
+En la siguiente imagen se muestra por completo el aplicativo web para generar reportes a partir de una tabla con dos columnas:
+
+![Tabla](images/telegram_bot_sql_report_app.png)
+
+Como primera impresión se encuentra una tabla con dos columnas (Color 1, Color 2, Acciones), aquí es donde se cargan los datos
+de base de datos y se muestran en forma de tabla. Además, en la columna de Acciones existen dos botones (Actualizar, Borrar).
+En caso de querer actualizar los valores de una fila, se puede escribir sin ningún problema, pero se debe presionar el botón Actualizar
+por cada fila, en caso de que se modifique otra fila y no presione su botón de Actualizar, los datos no se guardarán en la base de datos.
+Por otro lado, si se desea eliminar una fila, se presiona el botón Borrar de la fila deseada y automáticamente se borrará y se recargará la página mostrando la tabla actualizada.
+En la siguiente imagen podemos ver el ejemplo de esta tabla:
+
+![Tabla](images/Tabla.png)
+
+Si el usuario desea insertar una nueva fila con nuevos datos existe una sección donde hay dos campos vacíos que se pueden llenar y un botón para insertar 
+estos nuevos valores a la base de datos, una vez se inserten los valores, la página se recarga para mostrar la tabla actualizada. En la siguiente imagen se puede observar la sección mencionada:
+
+![insertar](images/insertar.png)
+
+Por otro lado, existe la sección del gráfico, el cuál se estará actualizando constantemente con respecto a los datos que se encuentran en la Tabla.
+El gráfico mencionado es como la primera imagen de este archivo.
+
+Para finalizar, la última sección es un formulario donde se coloca la información que será enviada en el reporte, los campos son: Cliente, Entorno y Asunto. En la siguiente imagen se puede apreciar este formulario:
+
+![insertar](images/formulario.png)
+
+
+Una vez se complete este formulario, se presiona el botón "Enviar reporte a Telegram" y el programa creará una imagen donde se guarde la tabla, el gráfico y la información
+descrita en la página web, esta imagen será enviada por medio de un bot de Telegram a un grupo. En la siguiente imagen se observa los reportes enviados por el bot al grupo de Telegram:
+
+![insertar](images/telegram.png)
+
 
 
 ## Lista de requerimientos (todas las dependencias necesarias para ejecutar la aplicación)
