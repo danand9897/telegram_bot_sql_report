@@ -215,7 +215,7 @@ def enviar():
     bot_token = "5818144839:AAFfOzq7Qo2ynP0XOnCqOOJQsfaeQqXwMLY"
 
     # La ID del chat donde quieres enviar la imagen
-    chat_id = "-875581438"
+    chat_id = "-820972397"
 
     # El nombre del archivo de la imagen que quieres enviar
     image_file = "images/mi_imagen.png"
@@ -238,7 +238,4 @@ def enviar():
     return render_template('confirmacion.html')
 
 if __name__ == '__main__':
-    #crerBase()
-    #ver()
-    #mandarTelegram()
     app.run(port=5500)
