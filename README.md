@@ -1,4 +1,18 @@
 # Telegram Bot Sql Report
+## Descripción general
+Esta aplicación es una herramienta web que permite a los usuarios gestionar una base de datos con dos columnas. Los usuarios 
+pueden visualizar los campos existentes en la base de datos mostrados en formato de tabla, insertar nuevos datos, actualizar 
+valores existentes y eliminarlos de la base de datos. Además, la aplicación muestra un gráfico combinado llamado Columna agrupada - Línea, 
+donde se presenta un gráfico de columna de barras agrupadas de color azul y una línea de color naranaja, como se muestra en la siguiente imagen:
+![Reporte de ejemplo](images/imagen_ejemplo.png)
+
+Todo esto se realiza mediante una interfaz web amigable y fácil de usar. Además, esta herramienta  permite a los usuarios 
+enviar reportes a un grupo de Telegram. Los usuarios pueden ingresar el nombre del cliente, el entorno en el que 
+se encuentran y el asunto del reporte en un formulario web y luego presionar el botón "Enviar reporte a Telegram" para
+enviar la información, este reporte es una imagen que se genera a partir de todos los datos ingresados anteriormente, la siguiente imagen es un ejemplo del reporte que llegaría al chat de Telegram:
+![Reporte de ejemplo](images/mi_imagen_ejemplo.png)
+
+
 ## Instalación 
 ### Python
 
@@ -21,11 +35,12 @@ git clone https://github.com/danand9897/telegram_bot_sql_report.git
 6. El repositorio se clonará a una carpeta con el mismo nombre del repositorio en la ubicación actual. Si quieres clonar el repositorio a una ubicación específica, puedes especificarla después de la URL, separándolas con una barra diagonal. Por ejemplo:
 git clone https://github.com/danand9897/telegram_bot_sql_report.git C:\rutadeseada\
 
-### Esta aplicación (telegram_bot_sql_report)
+### Aplicación telegram_bot_sql_report en entorno local
 1. Clonar el repositorio del proyecto en su computadora.
 2. Crear un entorno virtual en su computadora. Esto se puede hacer con el comando "python -m venv nombre_entorno_virtual" en la consola de comandos o en la terminal.
 3. Activar el entorno virtual con el comando "source nombre_entorno_virtual/bin/activate" (en Linux o Mac) o "nombre_entorno_virtual\Scripts\activate.bat" (en Windows).
 4. Instalar las dependencias del proyecto con el comando "pip install -r requerimientos.txt". Esto instalará todas las librerías necesarias para que la aplicación funcione.
 5. Ejecutar la aplicación con el comando "flask run". Por defecto, la aplicación se ejecuta en el puerto 5000, pero si dicho puerto está ocupado utilice el comando "flask run -p 5001" donde el último valor puede modificar por el puerto de su preferencia.
-6. Estás listo para utilizar esta aplicación.
+6. Estás listo, podrás acceder a la aplicación desde tu navegador web escribiendo http://127.0.0.1:5000/ en la barra de direcciones, o modificando el "5000" por el puerto que elegiste
 #### Es importante tener en cuenta que el entorno virtual debe ser creado y activado en la misma carpeta donde se encuentra el archivo "requerimientos.txt".
+
